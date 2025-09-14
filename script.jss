@@ -52,7 +52,9 @@ document.addEventListener("DOMContentLoaded", () => {
     feedbackEl.textContent = "";
     guessInput.value = "";
     nextBtn.style.display = "none";
-
+    submitBtn.disabled = false;
+    guessInput.disabled = false;
+    
     const item = WORD_LISTS[Math.floor(Math.random() * WORD_LISTS.length)];
     currentWord = item.word.toLowerCase();
 
@@ -63,6 +65,8 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       clueText.textContent = "Complete the word: " + hideLetters(item.word);
     }
+    
+    guessInput.focus();
   }
 
   function checkAnswer() {
@@ -75,19 +79,28 @@ document.addEventListener("DOMContentLoaded", () => {
       streak++;
       gameContainer.classList.add("correct");
       setTimeout(() => gameContainer.classList.remove("correct"), 1000);
+      submitBtn.disabled = true;
+      guessInput.disabled = true;
+      nextBtn.style.display = "inline-block";
     } else {
-      feedbackEl.textContent = "❌ Try again!";
+      feedbackEl.textContent = "❌ Incorrect. The correct word was: " + currentWord;
       streak = 0;
       gameContainer.classList.add("wrong");
       setTimeout(() => gameContainer.classList.remove("wrong"), 500);
+      submitBtn.disabled = true;
+      guessInput.disabled = true;
+      nextBtn.style.display = "inline-block";
     }
     updateUI();
-    nextBtn.style.display = "inline-block";
   }
 
   submitBtn.addEventListener("click", checkAnswer);
   nextBtn.addEventListener("click", newRound);
-  guessInput.addEventListener("keydown", (e) => { if (e.key === "Enter") checkAnswer(); });
+  guessInput.addEventListener("keydown", (e) => { 
+    if (e.key === "Enter") {
+      checkAnswer();
+    } 
+  });
 
   // Initialize
   updateUI();
