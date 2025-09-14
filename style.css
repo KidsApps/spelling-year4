@@ -1,4 +1,3 @@
-/* Background - space theme */
 body {
   margin: 0;
   font-family: 'Fredoka One', cursive;
@@ -11,7 +10,6 @@ body {
   align-items: center;
 }
 
-/* Stars animation */
 .stars, .stars2, .stars3 {
   position: absolute;
   width: 100%;
@@ -27,7 +25,6 @@ body {
   to { background-position: -10000px 5000px; }
 }
 
-/* Game card */
 .game-container {
   background: rgba(255, 255, 255, 0.1);
   padding: 20px 30px;
@@ -39,7 +36,6 @@ body {
   max-width: 400px;
 }
 
-/* Header (coins + streak) */
 header {
   display: flex;
   justify-content: space-between;
@@ -47,14 +43,9 @@ header {
   font-size: 18px;
 }
 
-.coins {
-  font-size: 20px;
-}
+.coins { font-size: 20px; }
 
-.streak-container {
-  text-align: right;
-  width: 60%;
-}
+.streak-container { text-align: right; width: 60%; }
 
 .streak-bar {
   background: #333;
@@ -71,7 +62,6 @@ header {
   transition: width 0.3s;
 }
 
-/* Inputs & buttons */
 #guess-input {
   width: 100%;
   padding: 12px;
@@ -93,29 +83,18 @@ button {
 
 #submit-btn { background: #4CAF50; color: white; }
 #next-btn { background: #2196F3; color: white; }
-#audio-btn { background: #ff9800; color: white; }
 
 button:hover { transform: scale(1.05); }
 
-/* Feedback */
-#feedback {
-  font-size: 20px;
-  margin: 10px 0;
-}
+#feedback { font-size: 20px; margin: 10px 0; }
 
-/* Correct animation */
-.correct {
-  animation: glowGreen 1s;
-}
+.correct { animation: glowGreen 1s; }
 @keyframes glowGreen {
   from { box-shadow: 0 0 20px #0f0; }
   to { box-shadow: none; }
 }
 
-/* Wrong animation */
-.wrong {
-  animation: shake 0.4s;
-}
+.wrong { animation: shake 0.4s; }
 @keyframes shake {
   0% { transform: translateX(0); }
   25% { transform: translateX(-5px); }
