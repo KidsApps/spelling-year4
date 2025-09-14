@@ -1,45 +1,125 @@
-:root{
---bg:#f6fbff;
---card:#ffffff;
---accent:#2b6cb0;
---muted:#6b7280;
---success:#16a34a;
---warning:#f59e0b;
+/* Background - space theme */
+body {
+  margin: 0;
+  font-family: 'Fredoka One', cursive;
+  color: #fff;
+  background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-*{box-sizing:border-box}
-body{font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;margin:0;background:var(--bg);color:#0f172a}
-.app{max-width:980px;margin:24px auto;padding:20px}
-header{display:flex;flex-direction:column;gap:6px}
-h1{margin:0;font-size:28px}
-.sub{margin:0;color:var(--muted)}
-.controls{display:flex;gap:10px;align-items:center;margin-top:16px}
-.controls label{display:flex;flex-direction:column;font-size:14px}
-.controls input, .controls select{padding:8px;border-radius:8px;border:1px solid #d1d5db}
-.controls button{padding:10px 12px;border-radius:8px;border:0;background:var(--accent);color:#fff;cursor:pointer}
-.game{margin-top:18px;background:var(--card);padding:16px;border-radius:12px;box-shadow:0 4px 14px rgba(2,6,23,0.06)}
-.mask{font-family:monospace;letter-spacing:10px;font-size:30px;text-align:center;padding:8px}
-.input-row{display:flex;gap:8px;justify-content:center;margin-top:12px}
-.input-row input{padding:10px;border-radius:8px;border:1px solid #d1d5db;width:60%}
-.input-row button{padding:10px 14px;border-radius:8px;border:0;background:var(--accent);color:white;cursor:pointer}
-.feedback{margin-top:12px;min-height:36px;text-align:center}
-.status{margin-top:18px;display:flex;gap:12px;flex-wrap:wrap}
-.stat{background:linear-gradient(180deg,#fff,#fbfdff);padding:8px 10px;border-radius:10px;border:1px solid #e6eef9}
-.muted{background:transparent;border:1px dashed #cbd5e1;padding:8px 10px;border-radius:8px;cursor:pointer}
-.coin{margin-left:6px}
-footer{margin-top:18px;color:var(--muted)}
 
+/* Stars animation */
+.stars, .stars2, .stars3 {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: transparent url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
+  animation: moveStars 100s linear infinite;
+}
+.stars2 { animation-duration: 150s; opacity: 0.5; }
+.stars3 { animation-duration: 200s; opacity: 0.3; }
 
-/* letter tiles for feedback */
-.tile{display:inline-block;width:40px;height:40px;line-height:40px;border-radius:6px;margin:3px;font-weight:600;color:white}
-.tile.correct{background:var(--success)}
-.tile.present{background:var(--warning)}
-.tile.absent{background:#9ca3af}
+@keyframes moveStars {
+  from { background-position: 0 0; }
+  to { background-position: -10000px 5000px; }
+}
 
+/* Game card */
+.game-container {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 20px 30px;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(255,255,255,0.2);
+  text-align: center;
+  z-index: 1;
+  width: 90%;
+  max-width: 400px;
+}
 
-/* confetti */
-.confetti{position:fixed;left:0;right:0;top:0;height:0;pointer-events:none}
-.confetti .p{position:absolute;font-size:24px;animation:fall 1500ms linear;opacity:0.95}
-@keyframes fall{from{transform:translateY(-20vh) rotate(0)}to{transform:translateY(110vh) rotate(360deg)}}
+/* Header (coins + streak) */
+header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
 
+.coins {
+  font-size: 20px;
+}
 
-@media (max-width:640px){.controls{flex-direction:column;align-items:stretch}.input-row input{width:100%}}
+.streak-container {
+  text-align: right;
+  width: 60%;
+}
+
+.streak-bar {
+  background: #333;
+  border-radius: 10px;
+  height: 10px;
+  margin-top: 5px;
+  overflow: hidden;
+}
+
+#streak-progress {
+  background: linear-gradient(90deg, #ffcc00, #ff6600);
+  height: 100%;
+  width: 0%;
+  transition: width 0.3s;
+}
+
+/* Inputs & buttons */
+#guess-input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 10px;
+  font-size: 18px;
+}
+
+button {
+  padding: 10px 20px;
+  margin: 5px;
+  border: none;
+  border-radius: 10px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+#submit-btn { background: #4CAF50; color: white; }
+#next-btn { background: #2196F3; color: white; }
+#audio-btn { background: #ff9800; color: white; }
+
+button:hover { transform: scale(1.05); }
+
+/* Feedback */
+#feedback {
+  font-size: 20px;
+  margin: 10px 0;
+}
+
+/* Correct animation */
+.correct {
+  animation: glowGreen 1s;
+}
+@keyframes glowGreen {
+  from { box-shadow: 0 0 20px #0f0; }
+  to { box-shadow: none; }
+}
+
+/* Wrong animation */
+.wrong {
+  animation: shake 0.4s;
+}
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
+}
