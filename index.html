@@ -1,60 +1,38 @@
-<!doctype html>
-<main class="app">
-<header>
-<h1>Spell & Earn — Year 4</h1>
-<p class="sub">Fun spelling practice with points, streaks and badges 🎉</p>
-</header>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Year 4 Spelling Game 🚀</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="stars"></div>
+  <div class="stars2"></div>
+  <div class="stars3"></div>
 
+  <div class="game-container">
+    <header>
+      <div class="coins">🪙 <span id="coins">0</span></div>
+      <div class="streak-container">
+        🚀 Streak: <span id="streak">0</span>
+        <div class="streak-bar">
+          <div id="streak-progress"></div>
+        </div>
+      </div>
+    </header>
 
-<section class="controls">
-<label>
-Player name:
-<input id="playerName" placeholder="e.g. Molly" maxlength="20">
-</label>
-<label>
-Difficulty:
-<select id="difficultySelect">
-<option value="easy">Easy</option>
-<option value="medium">Medium</option>
-<option value="ing">-ing words</option>
-<option value="ateify">-ate / -ify</option>
-<option value="enify">-en / -ify-like</option>
-<option value="ify">-ify group</option>
-</select>
-</label>
-<button id="newWordBtn">New Word</button>
-</section>
+    <h1>Year 4 Spelling Game</h1>
+    <p id="clue-text"></p>
+    <button id="audio-btn" style="display:none;">🔊 Hear the Word</button>
 
+    <input type="text" id="guess-input" placeholder="Type your answer here">
+    <button id="submit-btn">Submit</button>
 
-<section class="game">
-<div id="wordMask" class="mask">_ _ _ _ _ _</div>
-<div class="input-row">
-<input id="guessInput" placeholder="Type your guess" autocomplete="off">
-<button id="guessBtn">Guess</button>
-</div>
-<div id="feedback" class="feedback"></div>
-</section>
+    <p id="feedback"></p>
+    <button id="next-btn" style="display:none;">Next Word</button>
+  </div>
 
-
-<aside class="status">
-<div class="stat">Player: <span id="displayName">—</span></div>
-<div class="stat">Points: <span id="points">0</span> <span class="coin">🪙</span></div>
-<div class="stat">Streak: <span id="streak">0</span></div>
-<div class="stat">Best streak: <span id="bestStreak">0</span></div>
-<div class="stat">Words solved: <span id="solvedCount">0</span></div>
-<button id="resetBtn" class="muted">Reset progress</button>
-</aside>
-
-
-<div id="confetti" class="confetti" aria-hidden></div>
-
-
-<footer>
-<small>Made for Year 4 spelling practice — works on laptops and iPads. No login required.</small>
-</footer>
-</main>
-
-
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
