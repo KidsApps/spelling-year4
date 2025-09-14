@@ -1,0 +1,60 @@
+<!doctype html>
+<main class="app">
+<header>
+<h1>Spell & Earn — Year 4</h1>
+<p class="sub">Fun spelling practice with points, streaks and badges 🎉</p>
+</header>
+
+
+<section class="controls">
+<label>
+Player name:
+<input id="playerName" placeholder="e.g. Molly" maxlength="20">
+</label>
+<label>
+Difficulty:
+<select id="difficultySelect">
+<option value="easy">Easy</option>
+<option value="medium">Medium</option>
+<option value="ing">-ing words</option>
+<option value="ateify">-ate / -ify</option>
+<option value="enify">-en / -ify-like</option>
+<option value="ify">-ify group</option>
+</select>
+</label>
+<button id="newWordBtn">New Word</button>
+</section>
+
+
+<section class="game">
+<div id="wordMask" class="mask">_ _ _ _ _ _</div>
+<div class="input-row">
+<input id="guessInput" placeholder="Type your guess" autocomplete="off">
+<button id="guessBtn">Guess</button>
+</div>
+<div id="feedback" class="feedback"></div>
+</section>
+
+
+<aside class="status">
+<div class="stat">Player: <span id="displayName">—</span></div>
+<div class="stat">Points: <span id="points">0</span> <span class="coin">🪙</span></div>
+<div class="stat">Streak: <span id="streak">0</span></div>
+<div class="stat">Best streak: <span id="bestStreak">0</span></div>
+<div class="stat">Words solved: <span id="solvedCount">0</span></div>
+<button id="resetBtn" class="muted">Reset progress</button>
+</aside>
+
+
+<div id="confetti" class="confetti" aria-hidden></div>
+
+
+<footer>
+<small>Made for Year 4 spelling practice — works on laptops and iPads. No login required.</small>
+</footer>
+</main>
+
+
+<script src="script.js"></script>
+</body>
+</html>
